@@ -26,7 +26,7 @@ public class KreditRestController {
 		return kreditRepository.findAll();
 	}
 	
-	@GetMapping("kredit/{id}")
+	@GetMapping("/kredit/{id}")
 	public Kredit getKredit(@PathVariable Integer id) {
 		return kreditRepository.getOne(id);
 	}

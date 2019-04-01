@@ -61,7 +61,7 @@ public class TipRacunaRestController {
 	}
 	
 	//update
-	@PutMapping("/artikl")
+	@PutMapping("/tipRacuna")
 	public ResponseEntity<HttpStatus> updateTipRacuna(@RequestBody TipRacuna tipRacuna) {
 		if (tipRacunaRepository.existsById(tipRacuna.getId()))
 			tipRacunaRepository.save(tipRacuna);
