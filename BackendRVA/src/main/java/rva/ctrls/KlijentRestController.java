@@ -14,30 +14,37 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import rva.jpa.Klijent;
 import rva.reps.KlijentRepository;
 
+@Api(tags = {"Klijent CRUD operacije"})
 @RestController
 public class KlijentRestController {
 	
 	@Autowired
 	private KlijentRepository klijentRepository;
 	
+	@ApiOperation(value = "Vraća sve klijente iz baze podataka")
 	@GetMapping("/klijent")
 	public Collection<Klijent> getKlijente() {
 		return klijentRepository.findAll();
 	}
 	
+	@ApiOperation(value = "Vraća klijenta iz baze podataka čiji je id vrednost prosleđena kao path varijabla")
 	@GetMapping("klijent/{id}")
 	public Klijent getKlijenta(@PathVariable Integer id) {
 		return klijentRepository.getOne(id);
 	}
 	
+	@ApiOperation(value = "Vraća klijenta iz baze podataka čije je ime prosleđeno kao path varijabla")
 	@GetMapping("/klijentIme/{ime}")
 	public Collection<Klijent> findByIme(@PathVariable String ime) {
 		return klijentRepository.findByImeContainingIgnoreCase(ime);
 	}
 	
+	@ApiOperation(value = "Vraća klijenta iz baze podataka čije je prezime prosleđena kao path varijabla")
 	@GetMapping("/klijentPrezime/{prezime}")
 	public Collection<Klijent> findByPrezime(@PathVariable String prezime) {
 		return klijentRepository.findByPrezimeContainingIgnoreCase(prezime);
@@ -45,6 +52,7 @@ public class KlijentRestController {
 	
 	//delete
 	@Transactional
+	@ApiOperation(value = "Brise klijenta iz baze podataka")
 	@DeleteMapping("klijent/{id}")
 	public ResponseEntity<Klijent> deleteKlijent(@PathVariable Integer id) {
 		if (!klijentRepository.existsById(id))
@@ -54,6 +62,7 @@ public class KlijentRestController {
 	}
 	
 	//insert
+	@ApiOperation(value = "Dodaje novog klijenta u bazu podataka")
 	@PostMapping("klijent")
 	public ResponseEntity<Klijent> insertKlijent(@RequestBody Klijent klijent) {
 		klijentRepository.save(klijent);
@@ -61,6 +70,7 @@ public class KlijentRestController {
 	}
 	
 	//update
+	@ApiOperation(value = "Azurira vec postojeceg klijenta")
 	@PutMapping("klijent")
 	public ResponseEntity<Klijent> updateKlijent(@RequestBody Klijent klijent) {
 		if (!klijentRepository.existsById(klijent.getId()))
