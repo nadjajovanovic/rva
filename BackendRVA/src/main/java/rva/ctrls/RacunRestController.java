@@ -69,21 +69,19 @@ public class RacunRestController {
 	//insert
 	@ApiOperation(value = "Dodaje novi racun u bazu podataka")
 	@PostMapping("racun")
-	public ResponseEntity<Void> insertRacun(@RequestBody Racun racun){
-		if(racunRepository.existsById(racun.getId()))
-			return new ResponseEntity<Void>(HttpStatus.CONFLICT);
+	public ResponseEntity<Racun> insertRacun(@RequestBody Racun racun){
 		racunRepository.save(racun);
-		return new ResponseEntity<Void>(HttpStatus.OK);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
 	//update
 	@ApiOperation(value = "Azurira vec postojeci racun")
 	@PutMapping("racun")
-	public ResponseEntity<Void> updateRacun(@RequestBody Racun racun){
+	public ResponseEntity<Racun> updateRacun(@RequestBody Racun racun){
 		if(!racunRepository.existsById(racun.getId()))
-			return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		racunRepository.save(racun);
-		return new ResponseEntity<Void>(HttpStatus.OK);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 }

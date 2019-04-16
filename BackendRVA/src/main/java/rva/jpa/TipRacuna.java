@@ -19,7 +19,7 @@ public class TipRacuna implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="TIP_RACUNA_ID_GENERATOR", sequenceName="TIPRACUNA_SEQ", allocationSize = 1)
+	@SequenceGenerator(name="TIP_RACUNA_ID_GENERATOR", sequenceName="TIP_RACUNA_SEQ", allocationSize = 1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="TIP_RACUNA_ID_GENERATOR")
 	private Integer id;
 

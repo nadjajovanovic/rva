@@ -5,6 +5,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,11 +19,14 @@ import io.swagger.annotations.ApiOperation;
 import rva.jpa.Kredit;
 import rva.reps.KreditRepository;
 
-@Api(tags = {"Klijent CRUD operacije"})
+@Api(tags = {"Kredit CRUD operacije"})
 @RestController
 public class KreditRestController {
 	@Autowired
 	private KreditRepository kreditRepository;
+	
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
 	
 	@ApiOperation(value = "Vraća sve kredite iz baze podataka")
 	@GetMapping("kredit")
@@ -54,7 +58,10 @@ public class KreditRestController {
 	public ResponseEntity<HttpStatus> deleteKredit(@PathVariable Integer id) {
 		if (kreditRepository.existsById(id)) {
 			kreditRepository.deleteById(id);
-
+			
+			if (id == -100)
+				jdbcTemplate.execute("INSERT INTO \"kredit\"(\"id\", \"naziv\", \"oznaka\", \"opis\")\r\n" + 
+						"VALUES(-100, 'Naziv TEST', 'Oznaka TEST', 'Opis TEST');");
 
 			return new ResponseEntity<>(HttpStatus.OK);
 		}
