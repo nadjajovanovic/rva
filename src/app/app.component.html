@@ -1,5 +1,5 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<!--<div style="text-align:center">
   <h1>
     Welcome to {{ title }}!
   </h1>
@@ -18,4 +18,54 @@
   </li>
 </ul>
 
-<router-outlet></router-outlet>
+<router-outlet></router-outlet>-->
+
+<mat-sidenav-container class="example-container">
+  <mat-sidenav opened mode="side">
+    <mat-accordion>
+      <a mat-button style="text-align: center">
+        <mat-icon [routerLink]="['home']">home</mat-icon>
+      </a>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Aplikacija
+          </mat-panel-title>
+          <mat-panel-description>
+            Aplikacija za vodjenje evidencije
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-button [routerLink]="['klijent']">Klijent</a>
+        </mat-nav-list>
+        <mat-nav-list>
+          <a mat-button [routerLink]="['kredit']">Kredit</a>
+        </mat-nav-list>
+        <mat-nav-list>
+          <a mat-button [routerLink]="['tip-racuna']">Tip Racuna</a>
+        </mat-nav-list>
+        <mat-nav-list>
+          <a mat-button [routerLink]="['racun']">Racun</a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Informacije
+          </mat-panel-title>
+          <mat-panel-description>
+            Osnovne informacije o aplikaciji
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-button [routerLink]="['about']">Pomoć</a>
+        </mat-nav-list>
+        <mat-nav-list>
+          <a mat-button [routerLink]="['author']">Autor</a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-sidenav>
+  <router-outlet></router-outlet>
+</mat-sidenav-container>
