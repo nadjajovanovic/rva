@@ -33,32 +33,32 @@ public class TipRacunaRestController {
 	private JdbcTemplate jdbcTemplate;
 	
 	@ApiOperation(value = "Vraća tipove racuna iz baze podataka")
-	@GetMapping("/tipRacuna")
+	@GetMapping("/tip-racuna")
 	public Collection<TipRacuna> getTipoveRacuna() {
 		return tipRacunaRepository.findAll();
 	}
 	
 	@ApiOperation(value = "Vraća tip racuna iz baze podataka čija je id vrednost prosleđena kao path varijabla")
-	@GetMapping("/tipRacuna/{id}")
+	@GetMapping("/tip-racuna/{id}")
 	public TipRacuna getTipRacuna(@PathVariable Integer id) {
 		return tipRacunaRepository.getOne(id);
 	}
 	
 	@ApiOperation(value = "Vraća tip racuna iz baze podataka čiji je naziv prosleđena kao path varijabla")
-	@GetMapping("/tipRacunaNaziv/{naziv}")
+	@GetMapping("/tip-racunaNaziv/{naziv}")
 	public Collection<TipRacuna> findByNaziv(@PathVariable String naziv) {
 		return tipRacunaRepository.findByNazivContainingIgnoreCase(naziv);
 	}
 	
 	@ApiOperation(value = "Vraća tip racuna iz baze podataka čija je oznaka prosleđena kao path varijabla")
-	@GetMapping("/tipRacunaOznaka/{oznaka}")
+	@GetMapping("/tip-racunaOznaka/{oznaka}")
 	public Collection<TipRacuna> findByOznaka(@PathVariable String oznaka) {
 		return tipRacunaRepository.findByOznakaContainingIgnoreCase(oznaka);
 	}
 	
 	//delete
 	@ApiOperation(value = "Brise tip racuna iz baze podataka")
-	@DeleteMapping("/tipRacuna/{id}")
+	@DeleteMapping("/tip-racuna/{id}")
 	public ResponseEntity<HttpStatus> deleteTipRacuna(@PathVariable Integer id) {
 		if (tipRacunaRepository.existsById(id)) {
 			tipRacunaRepository.deleteById(id);
@@ -74,7 +74,7 @@ public class TipRacunaRestController {
 	
 	//insert
 	@ApiOperation(value = "Dodaje novi tip racuna u bazu")
-	@PostMapping("/tipRacuna")
+	@PostMapping("/tip-racuna")
 	public ResponseEntity<HttpStatus> insertTipRacuna(@RequestBody TipRacuna tipRacuna) {
 		tipRacunaRepository.save(tipRacuna);
 		return new ResponseEntity<>(HttpStatus.OK);
@@ -82,7 +82,7 @@ public class TipRacunaRestController {
 	
 	//update
 	@ApiOperation(value = "Azurira vec postojeci tip racuna")
-	@PutMapping("/tipRacuna")
+	@PutMapping("/tip-racuna")
 	public ResponseEntity<HttpStatus> updateTipRacuna(@RequestBody TipRacuna tipRacuna) {
 		if (tipRacunaRepository.existsById(tipRacuna.getId()))
 			tipRacunaRepository.save(tipRacuna);
