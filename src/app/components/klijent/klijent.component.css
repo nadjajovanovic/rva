@@ -41,3 +41,8 @@
   .mat-row:active, .mat-row.example-selected-row {
     background: #eaeaea;
   }
+
+  .mat-toolbar.mat-primary {
+    background-color: red;
+    color: black;
+}

@@ -50,12 +50,12 @@
     </ng-container>
  
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row style="cursor: pointer" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    <mat-row style="cursor: pointer" *matRowDef="let row; columns: displayedColumns;" (click)="selectRow(row)" [ngClass]="{'selectRow': selektovanKlijent != null && selektovanKlijent.id == row.id}"></mat-row> 
+    <mat-paginator [length]="100"
+                    [pageSize]="10"
+                    [pageSizeOptions]="[5, 10, 25, 100]">
+    </mat-paginator>
   </mat-table>
-  <mat-paginator [length]="100"
-              [pageSize]="10"
-              [pageSizeOptions]="[5, 10, 25, 100]">
-  </mat-paginator>
  </div>
  <div class="container mat-elevation-z8">
    <app-racun *ngIf="selektovanKlijent" 

@@ -40,3 +40,8 @@
 .title-center {
  margin: 0 auto;
 }
+
+.mat-toolbar.mat-primary {
+    background-color: red;
+    color: black;
+}

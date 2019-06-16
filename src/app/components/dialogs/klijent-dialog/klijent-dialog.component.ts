@@ -20,11 +20,12 @@ export class KlijentDialogComponent implements OnInit {
    public dialogRef: MatDialogRef<KlijentDialogComponent>,
    @Inject(MAT_DIALOG_DATA) public data: Klijent,
    public klijentService: KlijentService,
-   public kreditService: KreditService) { }
+   public kreditService: KreditService
+   ) { }
 
   ngOnInit() {
     this.kreditService.getAllKredite().subscribe(krediti =>
-      this.krediti = this.krediti
+      this.krediti = krediti
     );
   }
 
