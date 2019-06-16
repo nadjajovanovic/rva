@@ -45,3 +45,7 @@ INSERT INTO "racun"("id", "naziv", "oznaka", "opis", "tip_racuna", "klijent")
 VALUES (nextval('racun_seq'), 'Studentski racun', 'STR', 'Racuni za studente', 1,2);
 INSERT INTO "racun"("id", "naziv", "oznaka", "opis", "tip_racuna", "klijent")
 VALUES (nextval('racun_seq'), 'Racun za nezaposlene', 'RZN', 'Racuni za nezaposlene', 4,5);
+INSERT INTO "racun"("id", "naziv", "oznaka", "opis", "tip_racuna", "klijent")
+VALUES (nextval('racun_seq'), 'Racun za stednju', 'STE', 'Racun za stednju', 2,2);
+INSERT INTO "racun"("id", "naziv", "oznaka", "opis", "tip_racuna", "klijent")
+VALUES (nextval('racun_seq'), 'Racuni za kredite', 'RZK', 'Racuni za kredite', 3,3);
